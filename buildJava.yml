@@ -1,0 +1,24 @@
+name: Java CI with Maven - Test and package
+
+#Pull request
+on: [pull_request] # Ce workflow se déclenche sur un push dans le dépôt
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      # Étape 1
+      - name: Checkout dépôt
+        uses: actions/checkout@v4
+
+      # Étape 2
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'corretto'
+          java-version: '21'
+
+      # Étape 3
+      - name: Maven
+        run: mvn -B package
