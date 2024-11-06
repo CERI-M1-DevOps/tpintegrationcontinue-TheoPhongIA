@@ -5,7 +5,7 @@ on: [pull_request] # Ce workflow se déclenche sur un push dans le dépôt
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
       # Étape 1
