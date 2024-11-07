@@ -256,4 +256,19 @@ class ListeSimpleTest {
         System.out.println(listeATester);
         assertEquals("ListeSimple(Noeud(4), Noeud(2), Noeud(3), Noeud(1), Noeud(5))", listeATester.toString());
     }
+
+    @Test
+    void modifiePremierListeVide() {
+        listeATester.modifiePremier(1, 4);
+        assertEquals("ListeSimple()", listeATester.toString());
+    }
+
+    @Test
+    void modifiePremierElementNonPresent() {
+        listeATester.ajout(1);
+        listeATester.ajout(2);
+        listeATester.ajout(3);
+        listeATester.modifiePremier(5, 4);
+        assertEquals("ListeSimple(Noeud(3), Noeud(2), Noeud(1))", listeATester.toString());
+    }
 }
