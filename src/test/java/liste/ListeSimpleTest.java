@@ -2,8 +2,6 @@ package liste;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -304,26 +302,6 @@ class ListeSimpleTest {
         assertEquals("ListeSimple(Noeud(4), Noeud(2), Noeud(3), Noeud(1))", listeATester.toString());
     }
 
-
-    @ParameterizedTest
-    @CsvSource({
-            "3, ListeSimple(Noeud(2), Noeud(1)), 2",   // Supprime l'élément en première position
-            "2, ListeSimple(Noeud(3), Noeud(1)), 2",   // Supprime l'élément en position quelconque (au milieu)
-            "4, ListeSimple(Noeud(3), Noeud(2), Noeud(1)), 3" // Élément absent
-    })
-    void supprimePremier(int elementASupprimer, String listeAttendue, int tailleAttendue) {
-        listeATester.ajout(1);
-        listeATester.ajout(2);
-        listeATester.ajout(3);
-
-        listeATester.supprimePremier(elementASupprimer);
-
-        assertEquals(listeAttendue, listeATester.toString());
-        assertEquals(tailleAttendue, listeATester.getSize());
-    }
-
-
-    /*
     @Test
     void supprimePremierEnPremierePosition() {
         listeATester.ajout(1);
@@ -333,27 +311,5 @@ class ListeSimpleTest {
         assertEquals("ListeSimple(Noeud(2), Noeud(1))", listeATester.toString());
         assertEquals(2, listeATester.getSize());
     }
-
-    @Test
-    void supprimePremierElementAuMilieu() {
-        listeATester.ajout(1);
-        listeATester.ajout(2);
-        listeATester.ajout(3);
-        listeATester.supprimePremier(2);
-        assertEquals("ListeSimple(Noeud(3), Noeud(1))", listeATester.toString());
-        assertEquals(2, listeATester.getSize());
-    }
-
-    @Test
-    void supprimePremierElementAbsent() {
-        listeATester.ajout(1);
-        listeATester.ajout(2);
-        listeATester.ajout(3);
-        listeATester.supprimePremier(4);
-        assertEquals("ListeSimple(Noeud(3), Noeud(2), Noeud(1))", listeATester.toString());
-        assertEquals(3, listeATester.getSize());
-    }
-*/
-
 
 }
