@@ -29,6 +29,15 @@ jobs:
             ${{ runner.os }}-maven-
 
       # Étape 4
+      - name: Cache SonarQube analysis data
+        uses: actions/cache@v4
+        with:
+          path: ~/.sonar/cache
+          key: ${{ runner.os }}-sonar-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-sonar-
+
+      # Étape 5
       - name: Maven
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
