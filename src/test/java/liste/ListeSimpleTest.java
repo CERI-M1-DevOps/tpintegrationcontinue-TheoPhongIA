@@ -271,4 +271,33 @@ class ListeSimpleTest {
         listeATester.modifiePremier(5, 4);
         assertEquals("ListeSimple(Noeud(3), Noeud(2), Noeud(1))", listeATester.toString());
     }
+
+    @Test
+    void supprimePremierElementUniqueNonCorrespondant() {
+        listeATester.ajout(1);
+        listeATester.supprimePremier(2);
+        assertEquals("ListeSimple(Noeud(1))", listeATester.toString());
+        assertEquals(1, listeATester.getSize());
+    }
+
+    @Test
+    void supprimePremierElementAuMilieu() {
+        listeATester.ajout(1);
+        listeATester.ajout(2);
+        listeATester.ajout(3);
+        listeATester.supprimePremier(2);
+        assertEquals("ListeSimple(Noeud(3), Noeud(1))", listeATester.toString());
+        assertEquals(2, listeATester.getSize());
+    }
+
+    @Test
+    void supprimePremierElementAbsent() {
+        listeATester.ajout(1);
+        listeATester.ajout(2);
+        listeATester.ajout(3);
+        listeATester.supprimePremier(4);
+        assertEquals("ListeSimple(Noeud(3), Noeud(2), Noeud(1))", listeATester.toString());
+        assertEquals(3, listeATester.getSize());
+    }
+
 }
