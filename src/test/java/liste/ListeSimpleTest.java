@@ -304,6 +304,7 @@ class ListeSimpleTest {
 
     @Test
     void supprimePremierEnPremierePosition() {
+
         listeATester.ajout(1);
         listeATester.ajout(2);
         listeATester.ajout(3);
