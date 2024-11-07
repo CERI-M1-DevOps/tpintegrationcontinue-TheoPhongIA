@@ -1,0 +1,35 @@
+name: Documentation Generation
+
+on:
+  push:
+    branches:
+      - main  # Le pipeline se déclenche uniquement lorsqu'une PR est fusionnée dans la branche 'main'
+
+jobs:
+  generate-docs:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Étape 1: Checkout du code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Étape 2: Installer JDK (si vous générez la documentation avec Javadoc)
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'corretto'
+          java-version: '21'
+
+      # Étape 3: Générer la documentation avec Maven et Javadoc
+      - name: Generate Javadoc
+        run: mvn javadoc:javadoc
+
+      # Étape 4: (Optionnel) Déployer la documentation sur GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages  # Branche où la documentation sera déployée
+          folder: target/site/apidocs  # Dossier généré par Javadoc
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
